@@ -1,15 +1,24 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-2234594-6"></script>
+<!-- Google Analytics compat with Most browsers -->
+<!-- https://developers.google.com/analytics/devguides/collection/analyticsjs -->
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-2234594-6', 'auto');
+ga('send', 'pageview');
 
-  gtag('config', 'UA-2234594-6');
+// https://developers.google.com/analytics/devguides/collection/analyticsjs/events
+function handleDownloadImageLinkClicks(event) {
+  ga('send', 'event', {
+    eventCategory: 'Download Image',
+    eventAction: 'click',
+    eventLabel: event.target.href
+  });
+}
 </script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+<!-- End Google Analytics -->
 
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
@@ -137,5 +146,6 @@
 		<script src="env.js"></script>
 		<script type="text/javascript" src="simpleLoader.js"></script>
 		<script type="text/javascript" src="init.js"></script>
+    <div><a href="/jimu.js/css/images/chart/g9.png" onclick="handleDownloadImageLinkClicks();">download chart g9.png</a></div>
 	</body>
 </html>
