@@ -20,7 +20,7 @@ function handleDownloadImageLinkClicks(event) {
 };
 
 </script>
-<script async src='//www.google-analytics.com/analytics.js'></script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
 <!-- End Google Analytics -->
 
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -68,7 +68,7 @@ var event = new CustomEvent("myEventListener", {
 });
 
 // Dispatch/Trigger/Fire the event
-document.dispatchEvent(event);
+// document.dispatchEvent(event);
 
 
 // https://stackoverflow.com/questions/40722385/prevent-default-link-action-with-addeventlistener
@@ -79,26 +79,26 @@ document.getElementById("link22").addEventListener('click',function(e){
 });
 
 // source https://stackoverflow.com/questions/6041593/adding-click-event-via-addeventlistener-to-confirm-navigation-from-a-hyperlink
-var Anchors = document.getElementsByTagName("a");
-for (var i = 0; i < Anchors.length ; i++) {
-    Anchors[i].addEventListener("click", 
-        function (event) {
-            event.preventDefault();
-            if (confirm('Are you sure?')) {
-                window.location = this.href;
-            }
-        }, 
-        false);
-}
+// var Anchors = document.getElementsByTagName("a");
+// for (var i = 0; i < Anchors.length ; i++) {
+//     Anchors[i].addEventListener("click", 
+//         function (event) {
+//             event.preventDefault();
+//             if (confirm('Are you sure?')) {
+//                 window.location = this.href;
+//             }
+//         }, 
+//         false);
+// }
 
 
 // from Ferdinandi 2018-07-19
-// Listen to all clicks on the document
+// Listen to all clicks in the document
 document.addEventListener('click', function (event) {
   var clickedElem = event.target;
   // Check if the event.target matches some selector, and do things...
-  alert("clicked ");
-  console.log('className:' + event.target.className)
+  // alert("clicked ");
+  // console.log('className:' + event.target.className)
 
   if (event.target.dataset.flightID) {
   console.log('dataset.flightID:' + event.target.dataset.flightID)
