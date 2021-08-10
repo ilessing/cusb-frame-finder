@@ -1,0 +1,123 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+<!-- Google Analytics compat with Most browsers -->
+<!-- https://developers.google.com/analytics/devguides/collection/analyticsjs -->
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-2234594-6', 'auto');
+ga('send', 'pageview');
+
+// https://developers.google.com/analytics/devguides/collection/analyticsjs/events
+function handleDownloadImageLinkClicks(event) {
+  ga('send', 'event', {
+    eventCategory: 'Download Image',
+    eventAction: 'click',
+    eventLabel: event.target.href,
+    transport: 'beacon'
+  });
+  console.log('did a ga send');
+};
+
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+<!-- End Google Analytics -->
+
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+		<title>testing JS</title>
+	</head>
+	<body class="claro jimu-main-font">
+
+		<div id="main-loading">
+
+			<!-- This is section you can modify to customize the loading page -->
+			<div id="app-loading"></div>
+      <div id="loading-gif"></div>
+
+			<!-- //////////////////    END    ////////////////////////////// -->
+
+
+<a id="link22" href="example.com">Link 22</a>
+<br>
+<a id="link21" href="example.com">Link 21</a>
+
+<br>
+<a id="link2-index2" href="index2.html" class="download getHappy" data-line="line44" title="mylink2Title">index2.html</a>
+
+<br>
+<a id="link4-index4" href="index2.html" class="download getHappy" data-line="" title="mylink2Title">link4</a>
+
+
+<div><a href="/jimu.js/css/images/chart/g9.png" onclick="handleDownloadImageLinkClicks();">download chart g9.png</a></div>
+
+
+<div><a href="#" data-flightID="hks-jlsm" data-frameID="gh-49334">download frame gh-49334.png</a></div>
+
+
+<script type="text/javascript">
+  // Add an event listener
+document.addEventListener("myEventListener", function(e) {
+  console.log(e.detail); // Prints "Example of an event"
+});
+
+// Create the event
+var event = new CustomEvent("myEventListener", { 
+  "detail": "L45 paws on the ground" 
+});
+
+// Dispatch/Trigger/Fire the event
+document.dispatchEvent(event);
+
+
+// https://stackoverflow.com/questions/40722385/prevent-default-link-action-with-addeventlistener
+document.getElementById("link22").addEventListener('click',function(e){
+   e.preventDefault(); // Cancel the native event
+   e.stopPropagation();// Don't bubble/capture the event any further
+   alert("line 68")
+});
+
+// source https://stackoverflow.com/questions/6041593/adding-click-event-via-addeventlistener-to-confirm-navigation-from-a-hyperlink
+var Anchors = document.getElementsByTagName("a");
+for (var i = 0; i < Anchors.length ; i++) {
+    Anchors[i].addEventListener("click", 
+        function (event) {
+            event.preventDefault();
+            if (confirm('Are you sure?')) {
+                window.location = this.href;
+            }
+        }, 
+        false);
+}
+
+
+// from Ferdinandi 2018-07-19
+// Listen to all clicks on the document
+document.addEventListener('click', function (event) {
+  var clickedElem = event.target;
+  // Check if the event.target matches some selector, and do things...
+  alert("clicked ");
+  console.log('className:' + event.target.className)
+
+  if (event.target.dataset.flightID) {
+  console.log('dataset.flightID:' + event.target.dataset.flightID)
+  handleDownloadImageLinkClicks(event)
+  console.log('just fired the handleDownloadImageLinkClicks function')
+      }else{
+        console.log('dataset.line is null?')  //debug
+      }
+
+//  console.log(event.target);
+
+
+
+}, false);
+
+
+
+</script>
+
+
+	</body>
+</html>
